@@ -26,9 +26,9 @@ public class AttendanceServer {
         server.setExecutor(null); 
         server.start();
         
-        System.out.println("✅ Attendance Server is running!");
-        System.out.println("💻 Local Test: http://localhost:8000");
-        System.out.println("👉 Waiting for connections on port 8000...");
+        System.out.println(" Attendance Server is running!");
+        System.out.println(" Local Test: http://localhost:8000");
+        System.out.println(" Waiting for connections on port 8000...");
     }
 
     // Handles showing the Attendance Form
@@ -67,7 +67,7 @@ public class AttendanceServer {
                 // Check for duplicate IP
                 if (usedIps.contains(ipAddress)) {
                     responseHtml = "<html><body style='font-family: Arial; text-align: center; color: red; margin-top: 50px;'>" +
-                                   "<h2>❌ Proxy Attempt Blocked!</h2><p>This device has already marked attendance.</p></body></html>";
+                                   "<h2> Proxy Attempt Blocked!</h2><p>This device has already marked attendance.</p></body></html>";
                 } else {
                     usedIps.add(ipAddress);
                     
@@ -76,14 +76,14 @@ public class AttendanceServer {
                         fw.write("Roll No: " + rollNo + " | IP: " + ipAddress + " | Time: " + LocalDateTime.now() + "\n");
                         
                         // This prints the EXACT location of your file in the VS Code terminal
-                        System.out.println("💾 DATA SAVED for Roll No: " + rollNo);
-                        System.out.println("📂 File Location: " + new File("attendance.txt").getAbsolutePath());
+                        System.out.println(" DATA SAVED for Roll No: " + rollNo);
+                        System.out.println(" File Location: " + new File("attendance.txt").getAbsolutePath());
                     } catch (Exception e) {
                         System.out.println("Error saving file: " + e.getMessage());
                     }
 
                     responseHtml = "<html><body style='font-family: Arial; text-align: center; color: green; margin-top: 50px;'>" +
-                                   "<h2>✅ Success!</h2><p>Attendance marked for Roll No: " + rollNo + ".</p></body></html>";
+                                   "<h2> Success!</h2><p>Attendance marked for Roll No: " + rollNo + ".</p></body></html>";
                 }
 
                 t.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
